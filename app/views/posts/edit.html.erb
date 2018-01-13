@@ -1,5 +1,5 @@
 <h1><%=@post.id%> 번 post를 수정할 화면</h1>
-<form action="/posts/update/<%=@post.id%>">
+<form action="/posts/update/<%=@post.id%>" method="post">
     <p>제목</p>
     <input type="text" name="input_title" value="<%=@post.title %>">
     <p>내용</p>

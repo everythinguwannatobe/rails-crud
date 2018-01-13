@@ -95,3 +95,13 @@ redirect_to '/'
 @post.content = params[:input_content]
 @post.save
 redirect_to "/posts/show/#{@post.id}"
+
+
+## GET/POST
+### get-> request data,  post-> Submits data 
+
++ get 방식은 주소 url로 crud가 가능함!보안상 좋지않음
++ form에 method="post" 추가 default는 get
++ application.controller에서 (protect_from_forgery with: :exception) 부분을 주석처리하고 post 사용
++ 위 부분이 보안관련 내용인데 일단 주석처리하자!
++ 삭제는 data-method="post" 부분을 a태그에 추가하면 delete 실행됨
