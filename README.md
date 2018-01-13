@@ -132,13 +132,11 @@ redirect_to "/posts/show/#{@post.id}"
 
 
 > comment의 컨트롤러 부분 
-> @comment = Comment.new
-> @comment.content = params[:input_comment]
-> @comment.post_id = params[:post_id]
->  redirect_to "/posts/show/#{params[:post_id]}" 
-
-> post의 컨트롤러 부분
-> @comments = Comment.where(post_id: params[:post_id])
-
-> + 2.destroy 액션
+@comment = Comment.new
+@comment.content = params[:input_comment]
+@comment.post_id = params[:post_id]
+redirect_to "/posts/show/#{params[:post_id]}" 
+post의 컨트롤러 부분
+@comments = Comment.where(post_id: params[:post_id])
++ 2.destroy 액션
 

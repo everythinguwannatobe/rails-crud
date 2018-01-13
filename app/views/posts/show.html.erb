@@ -11,7 +11,7 @@
 </form>
 <hr>
  <% @comments.each do |comment| %>
-     <p>--> <%= comment.content %></p>
+     <p>--> <%= comment.content %> <a href='/posts/show/<%= @post.id %>/comments/destroy/<%= comment.id %>' data-method="post" data-confirm="댓글을 삭제합니다.!">[x]</a> </p>
  <% end %>
 <hr>
 <h3><a href="/">목록으로가기</a></h3>
