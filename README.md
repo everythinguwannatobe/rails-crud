@@ -4,10 +4,12 @@
 -post모델
 -comment 모델(1:n)
 ## View
+```
 + 새로 post 작성 C
 + 전체 post 보기 R
 + 1개 post 보기 R
-+1개 post 수정 U
++ 1개 post 수정 U
+```
 
 ## Post controller
 ### -create-
@@ -29,32 +31,35 @@
 ## DB관련 부분
 
 ### table
-
+```
 + 데이터베이스를 직접 조작은 x
 + rails를 통해 조작
 + rails db gem을 설치하면 데이터베이스의 테이블들을 시각적으로 볼수있음. 
 + 주소/rails/db
 + rails 프로그램과 db프로그램이 다르다! 이 둘을 연결해서 조작이 가능하게 하는것이 migration 파일이다.!
 + 쉽게 말하면 요구사항을 migration파일에 작성해 마이그레이션을 해주면 동작함!
-
+```
 
 ## 명령어
-rails g model Post
-rails g model Comment content:string (댓글의 컬럼을 옆과 같이 미리 정할수있음)
-rails g controller posts-> s붙이는게 네이밍 컨벤션
-
+```
++ rails g model Post
++ rails g model Comment content:string (댓글의 컬럼을 옆과 같이 미리 정할수있음)
++ rails g controller posts-> s붙이는게 네이밍 컨벤션
+```
 
 ## create 부분
-@post= Post.new
-@post.title = params[:input_title] or [’input_title’]
-@post.content = params[:input_content] 
-@post.save
+```
++ @post= Post.new
++ @post.title = params[:input_title] or [’input_title’]
++ @post.content = params[:input_content] 
++ @post.save
 
-title과 content는 migration파일에서 정해준 이름
-
++ title과 content는 migration파일에서 정해준 이름
+```
 
 
 ## read 부분
+```
 + 1)index 액션(글 전체)
 1.route
 root 'posts#index' 맨 처음페이지가 글 전체이므로
@@ -64,7 +69,9 @@ root 'posts#index' 맨 처음페이지가 글 전체이므로
 <% end %>
 3.컨트롤러
 @posts =Post.all
+```
 
+```
 + 2)show액션 (글 하나하나)
 1.route
 get '/posts/show/:post_id'=> 'posts#show'
@@ -72,6 +79,7 @@ get '/posts/show/:post_id'=> 'posts#show'
 <h3><a href="/posts/show/<%= post.id%>"><%= post.id %>: <%= post.title %></a></h3>
 3. 컨트롤러부분
 @post = Post.find(params[:post_id])
+```
 
 + +추가+ 글작성시 바로 그 글로 가기 위해
 redirect_to "/posts/show/#{@post.id}"
