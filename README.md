@@ -99,12 +99,14 @@ redirect_to "/posts/show/#{@post.id}"
   @post =Post.find(params[:post_id])
   @post.destroy
   redirect_to '/'
+```
 
-  ## update 부분
+## update 부분
+```
   1) edit 액션 (수정화면)
   1.컨트롤러 
   @post = Post.find(params[:post_id])
-```
+
 
 ```
 
