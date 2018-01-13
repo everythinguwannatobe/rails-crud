@@ -1,15 +1,15 @@
-#CRUD
+# CRUD
 <rails>
-##Model
+## Model
 -post모델
 
-##View
+## View
 새로 post 작성 C
 전체 post 보기 R
 1개 post 보기 R
 1개 post 수정 U
 
-##Post controller
+## Post controller
 -create
 -post 새로 작성하는 view용 액션
 -실제로 db에 저장하는 액션
@@ -54,7 +54,7 @@ title과 content는 migration파일에서 정해준 이름
 
 
 
-##read 부분
+## read 부분
 + 1)index 액션(글 전체)
 1.route
 root 'posts#index' 맨 처음페이지가 글 전체이므로
@@ -76,14 +76,14 @@ get '/posts/show/:post_id'=> 'posts#show'
 + +추가+ 글작성시 바로 그 글로 가기 위해
 redirect_to "/posts/show/#{@post.id}"
 
-##delete 부분
+## delete 부분
 + 1)destroy 액션
 1.컨트롤러
 @post =Post.find(params[:post_id])
 @post.destroy
 redirect_to '/'
 
-##update 부분
+## update 부분
 1)edit 액션 (수정화면)
 1.컨트롤러 
 @post = Post.find(params[:post_id])
