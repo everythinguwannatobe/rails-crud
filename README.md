@@ -159,9 +159,10 @@ post의 컨트롤러 부분
 ```
 
 + 2.destroy 액션
-+ @comment =Comment.find(params[:comment_id])
+```
+  @comment =Comment.find(params[:comment_id])
   @comment.destroy
   redirect_to "/posts/show/#{params[:post_id]}"
-
+```
 ### post와 연관된 댓글 모두 삭제
 + post.rb 에서 has_many :comments, **dependent: :destroy** 로 변경
