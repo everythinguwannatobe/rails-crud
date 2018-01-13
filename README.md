@@ -127,19 +127,18 @@ redirect_to "/posts/show/#{@post.id}"
 ### 3.comments 컨트롤러 만들기
 + rails g controller comments
 > + 1.create 액션
->> 뷰 부분 
->> <form action="/posts/show/<%= @post.id %>/comments/create" method="post">
+> 뷰 부분 
+> <form action="/posts/show/<%= @post.id %>/comments/create" method="post">
 
 
->> comment의 컨트롤러 부분 
->> @comment = Comment.new
->> @comment.content = params[:input_comment]
->> @comment.post_id = params[:post_id]
->> @comment.save
->> redirect_to "/posts/show/#{params[:post_id]}" 
+> comment의 컨트롤러 부분 
+> @comment = Comment.new
+> @comment.content = params[:input_comment]
+> @comment.post_id = params[:post_id]
+>  redirect_to "/posts/show/#{params[:post_id]}" 
 
->> post의 컨트롤러 부분
->> @comments = Comment.where(post_id: params[:post_id])
+> post의 컨트롤러 부분
+> @comments = Comment.where(post_id: params[:post_id])
 
 > + 2.destroy 액션
 
