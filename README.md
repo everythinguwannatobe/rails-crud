@@ -138,7 +138,7 @@ redirect_to "/posts/show/#{@post.id}"
 + ->has_many :comments
 
 ### 2.comment 마이그레이션 파일
-+ t.integer :post_id or t.belongs_to :post 둘다 가능 하지만 왼쪽이 더 명시적!
++ t.integer :post_id or **t.belongs_to :post** 둘다 가능 하지만 오른쪽이 더 명시적!
 
 
 ### 3.comments 컨트롤러 만들기
