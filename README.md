@@ -93,7 +93,7 @@ redirect_to "/posts/show/#{@post.id}"
 
 ## delete 부분
 ```
-+ 1)destroy 액션
+1)destroy 액션
 
   1.컨트롤러
   @post =Post.find(params[:post_id])
@@ -146,10 +146,9 @@ redirect_to "/posts/show/#{@post.id}"
 + rails g controller comments
 + 1.create 액션
 
-뷰 부분 
++ 뷰 부분 
 ```
 <form action="/posts/show/<%= @post.id %>/comments/create" method="post">
-
 
 comment의 컨트롤러 부분 
 @comment = Comment.new
