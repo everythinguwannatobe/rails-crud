@@ -60,6 +60,7 @@
 
 ## read 부분
 ```
+
 + 1)index 액션(글 전체)
 1.route
 root 'posts#index' 맨 처음페이지가 글 전체이므로
@@ -85,6 +86,7 @@ get '/posts/show/:post_id'=> 'posts#show'
 redirect_to "/posts/show/#{@post.id}"
 
 ## delete 부분
+```
 + 1)destroy 액션
 1.컨트롤러
 @post =Post.find(params[:post_id])
@@ -95,6 +97,9 @@ redirect_to '/'
 1) edit 액션 (수정화면)
 1.컨트롤러 
 @post = Post.find(params[:post_id])
+```
+
+```
 
 2) update액션
 1.컨트롤러 
@@ -103,7 +108,7 @@ redirect_to '/'
 @post.content = params[:input_content]
 @post.save
 redirect_to "/posts/show/#{@post.id}"
-
+```
 
 ## GET/POST
 ### get-> request data,  post-> Submits data 
