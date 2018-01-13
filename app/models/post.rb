@@ -1,4 +1,4 @@
 class Post < ActiveRecord::Base
     #여러댓글을 가지고있다.
-    has_many :comments
+    has_many :comments, dependent: :destroy
 end

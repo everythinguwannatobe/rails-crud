@@ -126,17 +126,21 @@ redirect_to "/posts/show/#{@post.id}"
 
 ### 3.comments 컨트롤러 만들기
 + rails g controller comments
-> + 1.create 액션
-> 뷰 부분 
-> <form action="/posts/show/<%= @post.id %>/comments/create" method="post">
++ 1.create 액션
+
+뷰 부분 
+<form action="/posts/show/<%= @post.id %>/comments/create" method="post">
 
 
-> comment의 컨트롤러 부분 
+comment의 컨트롤러 부분 
 @comment = Comment.new
 @comment.content = params[:input_comment]
 @comment.post_id = params[:post_id]
 redirect_to "/posts/show/#{params[:post_id]}" 
 post의 컨트롤러 부분
 @comments = Comment.where(post_id: params[:post_id])
+
 + 2.destroy 액션
 
+### post와 연관된 댓글 모두 삭제
++ post.rb 에서 has_many :comments, **dependent: :destroy** 로 변경
