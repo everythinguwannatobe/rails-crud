@@ -62,24 +62,30 @@
 ```
 
 + 1)index 액션(글 전체)
-1.route
-root 'posts#index' 맨 처음페이지가 글 전체이므로
-2.뷰
-<% @posts.each do |post| %>
-<h3><a href="/posts/show/<%= post.id%>"><%= post.id %>: <%= post.title %></a></h3>
-<% end %>
-3.컨트롤러
-@posts =Post.all
+
++ 1.route
+  root 'posts#index' 맨 처음페이지가 글 전체이므로
+
+  2.뷰
+  <% @posts.each do |post| %>
+  <h3><a href="/posts/show/<%= post.id%>"><%= post.id %>: <%= post.title %></a></h3>
+  <% end %>
+  
+  3.컨트롤러
+  @posts =Post.all
 ```
 
 ```
 + 2)show액션 (글 하나하나)
-1.route
-get '/posts/show/:post_id'=> 'posts#show'
-2.뷰 부분
-<h3><a href="/posts/show/<%= post.id%>"><%= post.id %>: <%= post.title %></a></h3>
-3. 컨트롤러부분
-@post = Post.find(params[:post_id])
+  
+  1.route
+  get '/posts/show/:post_id'=> 'posts#show'
+  
+  2.뷰 부분
+  <h3><a href="/posts/show/<%= post.id%>"><%= post.id %>: <%= post.title %></a></h3>
+
+  3. 컨트롤러부분
+  @post = Post.find(params[:post_id])
 ```
 
 + +추가+ 글작성시 바로 그 글로 가기 위해
@@ -88,37 +94,39 @@ redirect_to "/posts/show/#{@post.id}"
 ## delete 부분
 ```
 + 1)destroy 액션
-1.컨트롤러
-@post =Post.find(params[:post_id])
-@post.destroy
-redirect_to '/'
 
-## update 부분
-1) edit 액션 (수정화면)
-1.컨트롤러 
-@post = Post.find(params[:post_id])
+  1.컨트롤러
+  @post =Post.find(params[:post_id])
+  @post.destroy
+  redirect_to '/'
+
+  ## update 부분
+  1) edit 액션 (수정화면)
+  1.컨트롤러 
+  @post = Post.find(params[:post_id])
 ```
 
 ```
 
 2) update액션
-1.컨트롤러 
-@post = Post.find(params[:post_id])
-@post.title = params[:input_title]
-@post.content = params[:input_content]
-@post.save
-redirect_to "/posts/show/#{@post.id}"
+
+  1.컨트롤러 
+  @post = Post.find(params[:post_id])
+  @post.title = params[:input_title]
+  @post.content = params[:input_content]
+  @post.save
+  redirect_to "/posts/show/#{@post.id}"
 ```
 
 ## GET/POST
 ### get-> request data,  post-> Submits data 
-
+```
 + get 방식은 주소 url로 crud가 가능함!보안상 좋지않음
 + form에 method="post" 추가 default는 get
 + application.controller에서 (protect_from_forgery with: :exception) 부분을 주석처리하고 post 사용
 + 위 부분이 보안관련 내용인데 일단 주석처리하자!
 + 삭제는 data-method="post" 부분을 a태그에 추가하면 delete 실행됨
-
+```
 ##1:N (댓글)
 + 댓글을 배열로 저장? no!!! 컬럼에 배열은 들어갈수 없음.
 + 새로운 table 필요!
@@ -139,6 +147,7 @@ redirect_to "/posts/show/#{@post.id}"
 + 1.create 액션
 
 뷰 부분 
+```
 <form action="/posts/show/<%= @post.id %>/comments/create" method="post">
 
 
@@ -149,6 +158,7 @@ comment의 컨트롤러 부분
 redirect_to "/posts/show/#{params[:post_id]}" 
 post의 컨트롤러 부분
 @comments = Comment.where(post_id: params[:post_id])
+```
 
 + 2.destroy 액션
 + @comment =Comment.find(params[:comment_id])
