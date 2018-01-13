@@ -1,53 +1,50 @@
-# CRUD
-<rails>
+# RAILS CRUD 학습 (기본 crud기능 및 댓글기능)
+
 ## Model
 -post모델
 -comment 모델(1:n)
 ## View
-새로 post 작성 C
-전체 post 보기 R
-1개 post 보기 R
-1개 post 수정 U
++ 새로 post 작성 C
++ 전체 post 보기 R
++ 1개 post 보기 R
++1개 post 수정 U
 
 ## Post controller
 ### -create-
--post 새로 작성하는 view용 액션
--실제로 db에 저장하는 액션
++ post 새로 작성하는 view용 액션
++ 실제로 db에 저장하는 액션
 
 ### -read-
--전체를 post를 보여주는 view용 액션
--특정 post보여주는 view용 액션
++ 전체를 post를 보여주는 view용 액션
++ 특정 post보여주는 view용 액션
 
 ### -update-
--특정 post를 수정하기 위한 view용 액션
--수정된 내용을 실제로 db에 저장하는 액션
++ 특정 post를 수정하기 위한 view용 액션
++ 수정된 내용을 실제로 db에 저장하는 액션
 
 ### -delete
--특정 post를 삭제하는 액션
++ 특정 post를 삭제하는 액션
 
 
-<database>
+## DB관련 부분
 
--table
--posts 테이블
--데이터베이스를 직접 조작은 x
--rails를 통해 조작
+### table
 
-rails db gem을 설치하면 데이터베이스의 테이블들을
-시각적으로 볼수있음. 
-주소/rails/db
++ 데이터베이스를 직접 조작은 x
++ rails를 통해 조작
++ rails db gem을 설치하면 데이터베이스의 테이블들을 시각적으로 볼수있음. 
++ 주소/rails/db
++ rails 프로그램과 db프로그램이 다르다! 이 둘을 연결해서 조작이 가능하게 하는것이 migration 파일이다.!
++ 쉽게 말하면 요구사항을 migration파일에 작성해 마이그레이션을 해주면 동작함!
 
+
+## 명령어
 rails g model Post
-rails g model Comment content:string 
-
-rails 프로그램과 db프로그램이 다르다! 이 둘을 연결해서 조작이 가능하게
-하는것이 migration 파일이다.!
-쉽게 말하면 요구사항을 migration파일에 작성해 마이그레이션을 해주면 동작함!
-rake db:migrate
-
+rails g model Comment content:string (댓글의 컬럼을 옆과 같이 미리 정할수있음)
 rails g controller posts-> s붙이는게 네이밍 컨벤션
 
-create 부분
+
+## create 부분
 @post= Post.new
 @post.title = params[:input_title] or [’input_title’]
 @post.content = params[:input_content] 
@@ -141,6 +138,9 @@ post의 컨트롤러 부분
 @comments = Comment.where(post_id: params[:post_id])
 
 + 2.destroy 액션
++ @comment =Comment.find(params[:comment_id])
+  @comment.destroy
+  redirect_to "/posts/show/#{params[:post_id]}"
 
 ### post와 연관된 댓글 모두 삭제
 + post.rb 에서 has_many :comments, **dependent: :destroy** 로 변경
