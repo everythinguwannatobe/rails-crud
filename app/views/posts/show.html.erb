@@ -1,0 +1,8 @@
+<h1> <%=@post.id%>번 post 입니다.</h1>
+
+<h2>제목 :<%= @post.title%></h2>
+<h2>내용 : <%= @post.content%></h2>
+
+<h3><a href="/">목록으로가기</a></h3>
+<h3><a href="/posts/edit/<%= @post.id %>" >[수정] </a></h3>
+<h3><a href="/posts/destroy/<%= @post.id %>" data-confirm="진짜 삭제?">[삭제] </a></h3>
