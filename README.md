@@ -107,10 +107,7 @@ redirect_to "/posts/show/#{@post.id}"
   1.컨트롤러 
   @post = Post.find(params[:post_id])
 
-
-```
-
-2) update액션
+  2) update액션
 
   1.컨트롤러 
   @post = Post.find(params[:post_id])
