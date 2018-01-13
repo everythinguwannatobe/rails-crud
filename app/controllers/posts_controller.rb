@@ -21,11 +21,12 @@ class PostsController < ApplicationController
     
     def show
         @post = Post.find(params[:post_id])
+        @comments = Comment.where(post_id: params[:post_id])
     end
     
     def edit
-    #사용자가 데이터를 입력할 화면 
-    @post = Post.find(params[:post_id])
+        #사용자가 데이터를 입력할 화면 
+        @post = Post.find(params[:post_id])
     end
     
     def update

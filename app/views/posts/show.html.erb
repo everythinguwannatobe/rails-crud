@@ -2,7 +2,18 @@
 
 <h2>제목 :<%= @post.title%></h2>
 <h2>내용 : <%= @post.content%></h2>
+<hr>
 
+<h3>댓글입니다.</h3>
+<form action="/posts/show/<%= @post.id %>/comments/create" method="post">
+    <input type="text" name="input_comment">
+    <input type="submit">
+</form>
+<hr>
+ <% @comments.each do |comment| %>
+     <p>--> <%= comment.content %></p>
+ <% end %>
+<hr>
 <h3><a href="/">목록으로가기</a></h3>
 <h3><a href="/posts/edit/<%= @post.id %>" >[수정] </a></h3>
 <h3><a href="/posts/destroy/<%= @post.id %>" data-confirm="진짜 삭제?" data-method="post">[삭제] </a></h3>
